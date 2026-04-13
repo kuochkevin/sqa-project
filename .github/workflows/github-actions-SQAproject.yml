@@ -1,0 +1,22 @@
+
+name: github-actions-SQAproject
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  vv-check-SQA:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Generate requirements
+        run: python scripts/generate_requirements.py
+
