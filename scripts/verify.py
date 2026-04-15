@@ -34,7 +34,7 @@ for r in requirements:
             failures.append(f"Missing field '{field}' in requirement: {r}")
 
     # Rule 2: ID format
-    if rid and not re.match(r"REQ-[A-Z]+-\d{3}[A-Z]$", rid):
+    if rid and not re.match(r"REQ-[A-Z|\.]+-\d{3}[A-Z]$", rid):
         failures.append(f"Invalid requirement_id format: {rid}")
 
     # Rule 3: Must have at least one test case
