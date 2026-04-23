@@ -51,8 +51,30 @@ for line in lines:
             "parent": parent
         })
 
+expected_structure = {}
+MAX_REQ = 10
+num_req = 0
+
+for req in requirements:
+    req_parent = req["parent"]
+    suffix = req["requirement_id"][len(req_parent):]
+
+    bucket = expected_structure.setdefault(req_parent, [])
+    if suffix not in bucket:
+        expected_structure[req_parent].append(suffix)
+        num_req += 1
+
+    if num_req >= MAX_REQ:
+        break
+
+
 # ---------- Save ----------
 with open(OUTPUT_JSON, "w") as f:
     json.dump(requirements, f, indent=2)
 
 print(f"Saved {len(requirements)} requirements → {OUTPUT_JSON}")
+
+with open("expected_structure.json", "w") as f:
+    json.dump(expected_structure, f, indent=2)
+
+print(f"Saved {num_req} to expected_structure.json")
