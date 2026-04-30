@@ -5,6 +5,10 @@ In this project, we designed a pipeline that from an input CFR Markdown file par
 
 Using the provided script "generate_requirements.py", we produced twenty-six requirements saved to "requirements.json". The script was modified to also generate the expected structure, placed in "expected_structure.json". We selected the first ten atomic rules as the expected structure; the script "generate_test_cases.py" was used to create ten test cases that corresponded to them. The output test cases are found in "test_cases.json".
 
+Requirements and expected structure command: python3 scripts/generate_requirements.py -i "Input CFR File/CFR-117.130.md" -o "requirements.json" -c "21 CFR 117.130"
+
+Test cases command: python3 scripts/generate_test_cases.py
+
 The verification and validation scripts from Assignment 6 were hooked to the GitHub repository's workflow actions to automatically execute them upon a git push or pull command. They ensured that our output files were correctly satisfied and built. The relevant logs can be seen under the Actions section of this repository.
 
 To complete/fix CI (forensick integration) required examining CI failed build logs.
